@@ -12,7 +12,7 @@ class Solution(object):
                     continue
                 box = (r // 3) * 3 + (c // 3)
 
-                if val in rows[r] or(val in cols[c]) or val in boxes[box]:
+                if val in rows[r] or val in cols[c] or val in boxes[box]:
                     return False
 
                 rows[r].add(val)
