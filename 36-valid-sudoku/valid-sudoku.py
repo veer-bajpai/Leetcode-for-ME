@@ -10,14 +10,14 @@ class Solution(object):
 
                 if val == '.':
                     continue
-                box_idx = (r // 3) * 3 + (c // 3)
+                box = (r // 3) * 3 + (c // 3)
 
-                if (val in rows[r] or(val in cols[c]) or val in boxes[box_idx]):
+                if val in rows[r] or(val in cols[c]) or val in boxes[box]:
                     return False
 
                 rows[r].add(val)
                 cols[c].add(val)
-                boxes[box_idx].add(val)
+                boxes[box].add(val)
 
         return True        
         
