@@ -1,14 +1,19 @@
+from collections import Counter
+
 class Solution(object):
     def checkInclusion(self, s1, s2):
-        low = 0
-        high = len(s1)
-        s1_count = Counter(s1)
-
-        while high <= len(s2):
-            window_count = Counter(s2[low:high])
-            if window_count == s1_count:
+        """
+        :type s1: str
+        :type s2: str
+        :rtype: bool
+        """
+        counts_1 = Counter(s1)
+        i = 0
+        j = len(s1)
+        while j <= len(s2):
+            window_counter = Counter(s2[i:j])
+            if counts_1 == window_counter:
                 return True
-            else:
-                low += 1
-                high += 1
-        return False            
+            i += 1
+            j += 1
+        return False
