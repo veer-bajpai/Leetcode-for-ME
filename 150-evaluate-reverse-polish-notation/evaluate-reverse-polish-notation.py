@@ -1,10 +1,19 @@
-class Solution:
+class Solution(object):
     def evalRPN(self, tokens):
-        action = {"+": add, "-": sub, "*": mul, "/": truediv}
         stack = []
         for token in tokens:
-            if token in action:
-                stack[-1] = int(action[token](stack[-2], stack.pop()))    
+            if token == '+':
+                stack.append(stack.pop() + stack.pop())
+            elif token == '-':
+                a = stack.pop()
+                b = stack.pop()
+                stack.append(b - a)
+            elif token == '*':
+                stack.append(stack.pop()* stack.pop())    
+            elif token == '/':
+                a = stack.pop()
+                b = stack.pop()
+                stack.append(int(float(b)/a))    
             else:
-                stack.append(int(token))
-        return stack.pop()
+                stack.append(int(token))  
+        return stack[0]          
