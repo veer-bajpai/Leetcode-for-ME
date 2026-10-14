@@ -1,8 +1,10 @@
 class Solution(object):
     def sortSentence(self, s):
-        splited_string = s[::-1].split()
-        splited_string.sort()
-        res = []
-        for word in splited_string:
-            res.append(word[1:][::-1])
-        return " ".join(res) 
+        s = s.split()
+        b = []
+
+        for i in range(1, len(s) + 1):
+            for j in s:
+                if j[-1] == str(i):
+                    b.append(j[:-1])
+        return " ".join(b)            
