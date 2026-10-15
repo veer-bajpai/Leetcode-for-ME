@@ -1,7 +1,7 @@
 class Solution(object):
     def diagonalSum(self, mat):
         first = 0
-        last = len(mat) - 1
+        last = len(mat[0]) - 1
         total = 0
 
         for i in mat:
