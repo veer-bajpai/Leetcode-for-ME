@@ -4,7 +4,7 @@ class Solution(object):
         ans = [""] * len(words)
         
         for word in words:
-            index = int(word[-1]) - 1 
-            ans[index] = word[:-1]
+            index = int(word[-1])
+            ans[index - 1] = word[:-1]
             
         return " ".join(ans)
