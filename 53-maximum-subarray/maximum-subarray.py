@@ -1,15 +1,9 @@
-class Solution:
+class Solution(object):
     def maxSubArray(self, nums):
-        max_sum = nums[0]
-        curr_sum = 0
+        curr_sum = max_sum = nums[0]
 
-        for num in nums:
-            curr_sum += num
-            if curr_sum > max_sum:
-                max_sum = curr_sum
+        for i in range(1, len(nums)):
+            curr_sum = max(curr_sum + nums[i], nums[i])
+            max_sum = max(curr_sum, max_sum)
 
-            if curr_sum < 0:
-                curr_sum = 0
-
-        return max_sum           
-
+        return max_sum    
