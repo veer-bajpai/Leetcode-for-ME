@@ -1,12 +1,16 @@
 class Solution(object):
     def isValid(self, s):
-        stk = [0]
-        mtch = {")":"(", "]":"[", "}":"{"}
-        for i in s:
-            if i in mtch.values():
-                stk.append(i)
-            elif stk[-1] == mtch[i]:
-                stk.pop()
+        a = []
+        f = True
+        for v in s:
+            if (len(a) != 0 and v == ')' and a[-1] == '('):
+                a = a[:-1]
+            elif (len(a) != 0 and v == ']' and a[-1] == '['):
+                a = a[:-1]
+            elif (len(a) != 0 and v == '}' and a[-1] == '{'):
+                a = a[:-1]
             else:
-                return False
-        return not stk.pop()                
+                a.append(v)
+        if (len(a) != 0):
+            f = False
+        return f            
