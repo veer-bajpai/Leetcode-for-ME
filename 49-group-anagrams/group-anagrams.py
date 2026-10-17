@@ -1,13 +1,12 @@
 class Solution(object):
     def groupAnagrams(self, strs):
-        anagram_map = {}
+        d = collections.defaultdict(list)
 
         for s in strs:
-            key = "".join(sorted(s))
+            count = [0]*26
 
-            if key in anagram_map:
-                anagram_map[key].append(s)
-            else:
-                anagram_map[key] = [s]
+            for letter in s:
+                count[ord(letter) - ord('a')] += 1
+            d[tuple(count)].append(s)
 
-        return list(anagram_map.values())         
+        return d.values()    
